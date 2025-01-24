@@ -1,12 +1,14 @@
 
 import './App.css';
-import { useState } from'react';
+// import { useState } from'react';
+import Board from './components/Board';
+import styles from './components/TicTacToe.module.css';
 
 function App() {
   return (
-    <div className="App">
-  
-    </div>
+    <div className={styles.Wrapper}>
+  <Board />
+  </div>
   );
 }
 

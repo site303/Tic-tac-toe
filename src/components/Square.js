@@ -1,18 +1,15 @@
-import React, { useState } from "react";
 
-export default function Square({value}) {
-  const [value, setValue] = useState(null);
-  function handleClick() {
-    setValue('X');
-  }
+import styles from "./TicTacToe.module.css";
 
+export default function Square({value, onSquareClick}) {
   return (
-    <>
-    <div className={styles.Wrapper}>
-      <button className={styles.sqrBtn} onClick={handleClick}>
+      <button className={styles.sqrBtn} onClick={onSquareClick}>
         {value}
       </button>
-    </div>
-    </>
   );
 }
+
+
+
+
+

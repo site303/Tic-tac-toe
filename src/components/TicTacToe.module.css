@@ -1,30 +1,70 @@
 *,
 *::after,
 *::before {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100vh;
 }
 
 .Wrapper {
-    display: flex;
-    justify-content: center; 
-    align-items: center;  
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0 10px;
-    height: 100%;
-    background-color: #91eb6dcd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 10px;
+  height: 100vh;
+  background: rgb(48,112,185);
+  background: linear-gradient(180deg, rgba(48,112,185,1) 35%, rgba(132,194,224,1) 100%);
+  position: relative;
 }
 
 .row {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
 }
 
 .sqrBtn {
-    width: 100px;
-    height: 100px;  
-    border: 2px solid #4a5159;
+    position: relative; 
+    width: 200px;
+    height: 200px;
+    border: 3px solid #6b6d71; 
+    background-color: transparent; 
+    cursor: pointer;
+    margin: 3px;
+    font-size: 100px;
+    color: #fff; 
+    z-index: 1000;
+    overflow: hidden; 
+  }
+  
+  .sqrBtn::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #9dabbb; 
+    opacity: 0.3;
+    z-index: -1; 
+    pointer-events: none; 
+  }
+  
+  .sqrBtn:hover::before {
+    background-color: #3c84d6; 
+  }
+
+  .status {
+    position: absolute;
+    color: #fff;
+    font-size: 30px;
+    top: 4%;
+    left: 4%;
 }
