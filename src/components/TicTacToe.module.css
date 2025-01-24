@@ -68,3 +68,16 @@ body {
     top: 4%;
     left: 4%;
 }
+
+.restartBtn {
+    position: absolute;
+    top:12%;
+    left:4%;
+    border: none;
+    border-radius: 50%;
+    color: #025b88;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    cursor: pointer;
+}

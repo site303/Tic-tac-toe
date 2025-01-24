@@ -20,6 +20,18 @@ export default function Board() {
     // Устанавливаем новый статус
     setStatus(newStatus);
   }
+    // обнуление ячеек 
+    function handleClear() {
+    const filledBoard = squares.every((square) => square !== null); // Проверяем, заполнены ли все клетки
+    const hasMoves = squares.some((square) => square !== null); // Проверяем, были ли сделаны ходы
+  
+    // Условие: сброс выполняется только если все ячейки заполнены или начались ходы
+    if (filledBoard || hasMoves) {
+      setSquares(Array(9).fill(null)); // Сбрасываем игровое поле
+      setXIsNext(true); // Сбрасываем ход текущего игрока
+      setStatus("Ходит X"); // Сбрасываем статус игры
+    }
+  }
 
   // функция на определение победителя
   function getStatus(squares, xIsNext) {
@@ -35,6 +47,7 @@ export default function Board() {
     if (filledBoard) {
       return "Игра окончена, ничья!";
     }
+  
     // Если ход еще не был сделан, выводим сообщение о первом игроке
     //   square !== null - ячейка НЕ пустая
     const hasMoves = squares.some((square) => square !== null);
@@ -65,6 +78,10 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
+      <button className={styles.restartBtn} onClick={handleClear}>
+        Restart
+      </button>
+      
     </div>
   );
 }
