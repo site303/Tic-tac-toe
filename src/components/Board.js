@@ -1,6 +1,8 @@
 import Square from "./Square";
 import styles from "./TicTacToe.module.css";
 import { useState } from "react";
+import RestartBtn from "./RestartBtn";
+
 export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
@@ -10,7 +12,7 @@ export default function Board() {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
-    // комментарий: потом посмотреть, можно ли диструктур
+    // комментарий: потом посмотреть, можно ли деструктор
     const nextSquares = squares.slice();
     xIsNext ? (nextSquares[i] = "X") : (nextSquares[i] = "O");
     setSquares(nextSquares);
@@ -22,15 +24,15 @@ export default function Board() {
   }
     // обнуление ячеек 
     function handleClear() {
-    const filledBoard = squares.every((square) => square !== null); // Проверяем, заполнены ли все клетки
-    const hasMoves = squares.some((square) => square !== null); // Проверяем, были ли сделаны ходы
-  
-    // Условие: сброс выполняется только если все ячейки заполнены или начались ходы
-    if (filledBoard || hasMoves) {
-      setSquares(Array(9).fill(null)); // Сбрасываем игровое поле
-      setXIsNext(true); // Сбрасываем ход текущего игрока
-      setStatus("Ходит X"); // Сбрасываем статус игры
-    }
+      const filledBoard = squares.every((square) => square !== null); // Проверяем, заполнены ли все клетки
+      const hasMoves = squares.some((square) => square !== null); // Проверяем, были ли сделаны ходы
+    
+      // Условие: сброс выполняется только если все ячейки заполнены или начались ходы
+      if (filledBoard || hasMoves) {
+        setSquares(Array(9).fill(null)); // Сбрасываем игровое поле
+        setXIsNext(true); // Сбрасываем ход текущего игрока
+        setStatus("Ходит X"); // Сбрасываем статус игры
+      }
   }
 
   // функция на определение победителя
@@ -78,9 +80,9 @@ export default function Board() {
         <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
         <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
       </div>
-      <button className={styles.restartBtn} onClick={handleClear}>
+      <RestartBtn handleClear={handleClear}>
         Restart
-      </button>
+      </RestartBtn>
       
     </div>
   );

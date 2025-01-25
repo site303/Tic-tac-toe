@@ -3,7 +3,7 @@ import styles from "./TicTacToe.module.css";
 
 export default function RestartBtn({ handleClear }) {
   return (
-    <button className={styles.restartBtn} onClick={handleClear}>
+    <button className={styles.restartBtn} onClick={() => handleClear()}>
       Restart
     </button>
   );
